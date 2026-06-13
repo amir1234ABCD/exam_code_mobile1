@@ -1,0 +1,12 @@
+// در target.java
+
+        TextView textViewDisplay = findViewById(R.id.mm_khroji);
+
+        UserModel receivedModel = getIntent().getParcelableExtra("KEY_MODEL");
+
+        if (receivedModel != null) {
+            String fullName = receivedModel.getFirstName() + " " + receivedModel.getLastName();
+            textViewDisplay.setText(fullName);
+        } else {
+            textViewDisplay.setText("خطا در دریافت داده");
+        }
