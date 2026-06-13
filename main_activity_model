@@ -1,0 +1,18 @@
+//send-data/main-activity
+        // در MainActivity.java
+
+        
+        EditText editTextFirstName = findViewById(R.id.editTextText2);
+        EditText editTextLastName = findViewById(R.id.editTextText3);
+        Button btnSubmit = findViewById(R.id.btn_submit);
+
+        btnSubmit.setOnClickListener(v -> {
+            String firstName = editTextFirstName.getText().toString();
+            String lastName = editTextLastName.getText().toString();
+
+            UserModel userModel = new UserModel(firstName, lastName);
+
+            Intent intent = new Intent(MainActivity.this, target.class);
+            intent.putExtra("KEY_MODEL", userModel);
+            startActivity(intent);
+        });
