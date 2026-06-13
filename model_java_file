@@ -1,0 +1,57 @@
+package com.example.tamrin3;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class UserModel implements Parcelable {
+    private String firstName;
+    private String lastName;
+
+    // سازنده اصلی
+    public UserModel(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    // سازنده برای خواندن از Parcel (ترتیب فیلدها مهم است)
+    protected UserModel(Parcel in) {
+        firstName = in.readString();
+        lastName = in.readString();
+    }
+
+    // نوشتن در Parcel (ترتیب باید با سازنده پارسل یکی باشد)
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
+        @Override
+        public UserModel createFromParcel(Parcel in) {
+            return new UserModel(in);
+        }
+
+        @Override
+        public UserModel[] newArray(int size) {
+            return new UserModel[size];
+        }
+    };
+
+    // Getterها
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+}
