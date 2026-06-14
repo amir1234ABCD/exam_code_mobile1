@@ -1,0 +1,12 @@
+Handler timing=new Handler();
+
+        Runnable time_setting=new Runnable() {
+            @Override
+            public void run() {
+                        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                        startActivity(intent);
+
+
+            }
+        };
+        timing.postDelayed(time_setting,5000);
